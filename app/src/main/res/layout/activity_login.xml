@@ -3,18 +3,179 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/foLogin"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esta vaina será el login" />
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="201dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:background="@color/foLogin"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/cosita" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/foLogin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="20dp"
+                android:text="Hola, bienvenido"
+                android:textColor="#ffffff"
+
+                android:textSize="30dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/foLogin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="Usuario"
+                android:textColor="#ffffff" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName2"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radiusinput"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:padding="10dp"
+                    android:text="Ingrese su usuario"
+                    android:textSize="15dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/foLogin"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="Contraseña"
+
+                android:textColor="#ffffff" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editTextTextPassword"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/radiusinput"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:text="Ingrese su contraseña"
+                    android:textSize="15dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnIngresar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/radius"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="Ingresar"
+
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnRegistrate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/radiosregistrate"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="Registrate"
+            android:textColor="#FFFFFF" />
+
+
+        <TextView
+            android:id="@+id/idolvidastecontra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="¿Olvidaste tu contraseña?"
+            android:textColor="#ffffff" />
+    </LinearLayout>
 
 </LinearLayout>
