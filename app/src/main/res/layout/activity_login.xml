@@ -162,6 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/radiosregistrate"
+            android:onClick="openSingUp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:text="Registrate"

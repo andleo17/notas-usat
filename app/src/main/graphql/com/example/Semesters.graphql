@@ -1,0 +1,8 @@
+query Semesters{
+    semesters{
+        name
+        startDate
+        finishDate
+        state
+    }
+}

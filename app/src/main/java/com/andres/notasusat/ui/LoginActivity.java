@@ -2,14 +2,10 @@ package com.andres.notasusat.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,14 +16,9 @@ import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.example.LoginQuery;
 
-
 import org.jetbrains.annotations.NotNull;
 
-import java.util.logging.Handler;
-
 public class LoginActivity extends AppCompatActivity {
-
-    Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,5 +61,10 @@ public class LoginActivity extends AppCompatActivity {
     public void openMainActivity(){
         Intent principal = new Intent(this, MainActivity.class);
         startActivity(principal);
+    }
+
+    public void openSingUp(View view){
+        Intent singUp = new Intent(this, SingUpActivity.class);
+        startActivity(singUp);
     }
 }
