@@ -123,14 +123,12 @@
                     android:id="@+id/txtPassword"
                     android:layout_width="340dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/radiusinput"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:textSize="15dp"
                     android:padding="10dp"
-                    />
-
-
-
+                    android:textSize="15dp" />
+                
 
             </LinearLayout>
 
