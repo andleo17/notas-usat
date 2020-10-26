@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -13,9 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Mis cursos"
+        android:textColor="@color/cardview_light_background"
         android:textSize="36sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
@@ -39,31 +40,33 @@
             android:background="@color/cardview_light_background">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textNombreCurso"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:text="Introducción a la Ingeniería de Sistemas y Computación"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Introducción"
                 android:textColor="@color/verde"
                 android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Profesor:"
                 android:textColor="@android:color/background_dark"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintStart_toStartOf="@+id/textNombreCurso"
+                app:layout_constraintTop_toBottomOf="@+id/textNombreCurso" />
 
             <TextView
                 android:id="@+id/textView9"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -71,33 +74,33 @@
                 android:textColor="@android:color/background_dark"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView8"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textNombreProfe"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="nombre1 nombre2 apellido1 apellido2"
                 android:textColor="@android:color/background_dark"
-                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="@+id/textNombreCurso"
                 app:layout_constraintStart_toEndOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/textNombreCurso" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/textNota"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="el 0 ps"
                 android:textColor="@android:color/background_dark"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView10"
-                app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintEnd_toEndOf="@+id/textNombreProfe"
+                app:layout_constraintStart_toEndOf="@+id/textView9" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
