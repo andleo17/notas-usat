@@ -27,125 +27,204 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.060000002" />
 
-    <EditText
-        android:id="@+id/inputNickname"
+    <TextView
+        android:id="@+id/Nickname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text="Nickname"
-        android:background="@drawable/radiusinput"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text" />
 
     <EditText
+        android:id="@+id/inputNickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/Nickname"
+        app:layout_constraintStart_toStartOf="@+id/Nickname"
+        app:layout_constraintTop_toBottomOf="@+id/Nickname" />
+
+    <TextView
+        android:id="@+id/contra"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Contraseña"
+        app:layout_constraintEnd_toEndOf="@+id/inputNickname"
+        app:layout_constraintStart_toStartOf="@+id/inputNickname"
+        app:layout_constraintTop_toBottomOf="@+id/inputNickname" />
+
+    <EditText
         android:id="@+id/inputEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/radiusinput"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="10dp"
-        android:text="Email"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <EditText
-        android:id="@+id/inputName"
+    <TextView
+        android:id="@+id/Nombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nombre"
-        android:background="@drawable/radiusinput"
-        android:padding="10dp"
+        android:layout_marginTop="8dp"
+        android:text="Nombres"
         app:layout_constraintEnd_toEndOf="@+id/inputEmail"
         app:layout_constraintStart_toStartOf="@+id/inputEmail"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
     <EditText
-        android:id="@+id/inputLastName"
+        android:id="@+id/inputName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:background="@drawable/radiusinput"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Apellidos"
-        android:background="@drawable/radiusinput"
         android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/Nombre"
+        app:layout_constraintStart_toStartOf="@+id/Nombre"
+        app:layout_constraintTop_toBottomOf="@+id/Nombre" />
+
+    <TextView
+        android:id="@+id/Apellidos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Apellidos"
         app:layout_constraintEnd_toEndOf="@+id/inputName"
         app:layout_constraintStart_toStartOf="@+id/inputName"
         app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
     <EditText
+        android:id="@+id/inputLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/Apellidos"
+        app:layout_constraintStart_toStartOf="@+id/Apellidos"
+        app:layout_constraintTop_toBottomOf="@+id/Apellidos" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Correo electrónico"
+        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/inputPassword"
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+
+    <EditText
         android:id="@+id/inputPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/radiusinput"
         android:ems="10"
         android:inputType="textPassword"
         android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/inputNickname"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputNickname"
-        app:layout_constraintTop_toBottomOf="@+id/inputNickname" />
+        app:layout_constraintEnd_toEndOf="@+id/contra"
+        app:layout_constraintStart_toStartOf="@+id/contra"
+        app:layout_constraintTop_toBottomOf="@+id/contra" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Fecha de nacimiento"
+        app:layout_constraintEnd_toEndOf="@+id/inputLastName"
+        app:layout_constraintStart_toStartOf="@+id/inputLastName"
+        app:layout_constraintTop_toBottomOf="@+id/inputLastName" />
 
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:background="@drawable/radiusinput"
         android:ems="10"
         android:inputType="date"
-        android:background="@drawable/radiusinput"
+        android:focusable="false"
+        android:clickable="true"
         android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/inputLastName"
-        app:layout_constraintStart_toStartOf="@+id/inputLastName"
-        app:layout_constraintTop_toBottomOf="@+id/inputLastName" />
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-    <Spinner
-        android:id="@+id/spinnerGenre"
+    <TextView
+        android:id="@+id/textView13"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/radiusinput"
-        android:padding="20dp"
-        android:entries="@array/gender"
+        android:layout_marginTop="8dp"
+        android:text="Género"
         app:layout_constraintEnd_toEndOf="@+id/editTextDate"
         app:layout_constraintStart_toStartOf="@+id/editTextDate"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
 
     <Spinner
-        android:id="@+id/spinnerSemester"
+        android:id="@+id/spinnerGenre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/radiusinput"
-        android:ems="10"
-        android:padding="20dp"
+        android:entries="@array/gender"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Semestre de ingreso"
         app:layout_constraintEnd_toEndOf="@+id/spinnerGenre"
         app:layout_constraintStart_toStartOf="@+id/spinnerGenre"
         app:layout_constraintTop_toBottomOf="@+id/spinnerGenre" />
 
     <Spinner
-        android:id="@+id/spinnerschool"
+        android:id="@+id/spinnerSemester"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/radiusinput"
-        android:padding="20dp"
+        android:ems="10"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Escuela"
         app:layout_constraintEnd_toEndOf="@+id/spinnerSemester"
         app:layout_constraintStart_toStartOf="@+id/spinnerSemester"
         app:layout_constraintTop_toBottomOf="@+id/spinnerSemester" />
+
+    <Spinner
+        android:id="@+id/spinnerschool"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:padding="20dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <Button
         android:id="@+id/btnRegister"
