@@ -124,10 +124,9 @@
                     android:id="@+id/editTextTextPassword"
                     android:layout_width="340dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/radiusinput"
+
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:padding="10dp"
                     android:text="Ingrese su contraseña"
                     android:textSize="15dp" />
 
