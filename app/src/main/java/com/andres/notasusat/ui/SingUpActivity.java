@@ -20,10 +20,8 @@ import com.example.SemestersQuery;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
 
 public class SingUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -32,6 +30,7 @@ public class SingUpActivity extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
         ArrayList<String> listSemesters = new ArrayList<>();
+        ArrayList<String> listSchool = new ArrayList<>();
         ApolloClient apolloClient = ApolloClient.builder().serverUrl("https://notas-gql.herokuapp.com/graphql/endpoint").build();
         apolloClient.query(new SemestersQuery()).enqueue(new ApolloCall.Callback<SemestersQuery.Data>() {
             @Override
@@ -57,12 +56,12 @@ public class SingUpActivity extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onResponse(@NotNull Response<SchoolsQuery.Data> response) {
                 for(int i = 0; i < response.getData().schools().size() ; i++){
-                    listSemesters.add(response.getData().schools().get(i).name());
-                    Log.e("Apollo", "Semestre: " + listSemesters);
+                    listSchool.add(response.getData().schools().get(i).name());
+                    Log.e("Apollo", "Semestre: " + listSchool);
                 }
                 runOnUiThread(new Runnable() {
                     public void run() {
-                        setSemesters(listSemesters);
+                        setSchool(listSchool);
                     }
                 });
             }
@@ -77,13 +76,16 @@ public class SingUpActivity extends AppCompatActivity implements AdapterView.OnI
 
     private void setSemesters(ArrayList<String> list){
         Spinner  spSemesters = (Spinner) findViewById(R.id.spinnerSemester);
-        Spinner  spShools = (Spinner) findViewById(R.id.spinnerschool);
-
         spSemesters.setOnItemSelectedListener(this);
-        spShools.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> comboSemesters = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list);
-        ArrayAdapter<CharSequence> comboSchool = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list);
         spSemesters.setAdapter(comboSemesters);
+    }
+
+    private void setSchool(ArrayList<String> list){
+        Spinner  spShools = (Spinner) findViewById(R.id.spinnerschool);
+        spShools.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> comboSchool = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list);
+        spShools.setAdapter(comboSchool);
     }
 
     @Override
