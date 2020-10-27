@@ -154,6 +154,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radiusinput"
+        android:clickable="true"
         android:ems="10"
         android:inputType="date"
         android:focusable="true"
@@ -169,12 +170,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Género"
-        app:layout_constraintEnd_toEndOf="@+id/inputDate"
         app:layout_constraintStart_toStartOf="@+id/inputDate"
         app:layout_constraintTop_toBottomOf="@+id/inputDate" />
 
-    <Spinner
-        android:id="@+id/spinnerGenre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radiusinput"
