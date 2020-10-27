@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.e("Apollo", "Usuario: " + response.getData().login().user().name());
                             runOnUiThread(new Runnable() {
                                 public void run() {
-                                    Toast.makeText(LoginActivity.this, "Bienvenido " +response.getData().login().user().name(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity.this, "Hola " +response.getData().login().user().name(), Toast.LENGTH_LONG).show();
                                 }
                             });
                             openMainActivity();
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    public void openMainActivity(){
+    private void openMainActivity(){
         Intent principal = new Intent(this, MainActivity.class);
         startActivity(principal);
     }

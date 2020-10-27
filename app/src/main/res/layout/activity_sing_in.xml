@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputNickname" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/inputDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -115,9 +115,9 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/radiusinput"
         android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextDate"
-        app:layout_constraintStart_toStartOf="@+id/editTextDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintEnd_toEndOf="@+id/inputDate"
+        app:layout_constraintStart_toStartOf="@+id/inputDate"
+        app:layout_constraintTop_toBottomOf="@+id/inputDate" />
 
     <Spinner
         android:id="@+id/spinnerSemester"

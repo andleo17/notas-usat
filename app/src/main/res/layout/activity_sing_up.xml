@@ -150,13 +150,13 @@
         app:layout_constraintTop_toBottomOf="@+id/inputLastName" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/inputDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radiusinput"
         android:ems="10"
         android:inputType="date"
-        android:focusable="false"
+        android:focusable="true"
         android:clickable="true"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/textView11"
@@ -169,17 +169,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Género"
-        app:layout_constraintEnd_toEndOf="@+id/editTextDate"
-        app:layout_constraintStart_toStartOf="@+id/editTextDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintEnd_toEndOf="@+id/inputDate"
+        app:layout_constraintStart_toStartOf="@+id/inputDate"
+        app:layout_constraintTop_toBottomOf="@+id/inputDate" />
 
     <Spinner
         android:id="@+id/spinnerGenre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radiusinput"
-        android:entries="@array/gender"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/textView13"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -228,6 +226,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/radius"
+        android:onClick="singUp"
         android:text="REGISTRAR"
         app:layout_constraintEnd_toEndOf="@+id/spinnerschool"
         app:layout_constraintStart_toStartOf="@+id/spinnerschool"

@@ -1,0 +1,10 @@
+mutation SingUp($data: UserInput!){
+    signup(data:$data){
+        user{
+            id
+            nickname
+            name
+        }
+        token
+    }
+}
