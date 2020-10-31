@@ -158,7 +158,6 @@
         android:ems="10"
         android:inputType="date"
         android:focusable="true"
-        android:clickable="true"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="@+id/textView11"
@@ -170,15 +169,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Género"
+        app:layout_constraintEnd_toEndOf="@+id/inputDate"
         app:layout_constraintStart_toStartOf="@+id/inputDate"
         app:layout_constraintTop_toBottomOf="@+id/inputDate" />
-
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/radiusinput"
-        app:layout_constraintEnd_toEndOf="@+id/textView13"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
         android:id="@+id/textView14"
@@ -186,16 +179,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Semestre de ingreso"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerGenre"
-        app:layout_constraintStart_toStartOf="@+id/spinnerGenre"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerGenre" />
+        app:layout_constraintEnd_toEndOf="@+id/textView13"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGenero" />
 
     <Spinner
         android:id="@+id/spinnerSemester"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/radiusinput"
         app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -206,6 +202,7 @@
         android:layout_marginTop="8dp"
         android:text="Escuela"
         app:layout_constraintEnd_toEndOf="@+id/spinnerSemester"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/spinnerSemester"
         app:layout_constraintTop_toBottomOf="@+id/spinnerSemester" />
 
@@ -242,6 +239,14 @@
         app:layout_constraintEnd_toEndOf="@+id/btnRegister"
         app:layout_constraintStart_toStartOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+    <Spinner
+        android:id="@+id/spinnerGenero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        tools:layout_editor_absoluteY="567dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

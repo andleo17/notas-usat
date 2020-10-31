@@ -109,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputLastName" />
 
     <Spinner
-        android:id="@+id/spinnerGenre"
+        android:id="@+id/spinnerGenrePerfil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -127,9 +127,9 @@
         android:background="@drawable/radiusinput"
         android:ems="10"
         android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerGenre"
-        app:layout_constraintStart_toStartOf="@+id/spinnerGenre"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerGenre" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerGenrePerfil"
+        app:layout_constraintStart_toStartOf="@+id/spinnerGenrePerfil"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGenrePerfil" />
 
     <Spinner
         android:id="@+id/spinnerschool"

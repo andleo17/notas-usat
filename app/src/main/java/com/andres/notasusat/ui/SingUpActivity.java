@@ -121,7 +121,7 @@ public class SingUpActivity extends AppCompatActivity  {
     }
 
     private void setGenre(){
-        Spinner spGenre = (Spinner)findViewById(R.id.spinnerGenre);
+        Spinner spGenre = (Spinner)findViewById(R.id.spinnerGenrePerfil);
 
         spGenre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
