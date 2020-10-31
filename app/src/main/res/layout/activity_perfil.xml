@@ -196,9 +196,10 @@
             android:id="@+id/spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/radiusinput"
             app:layout_constraintEnd_toEndOf="@+id/textView13"
             app:layout_constraintStart_toStartOf="@+id/textView13"
-            tools:layout_editor_absoluteY="440dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
