@@ -6,4 +6,7 @@
     <color name="verde">#0F5D5D</color>
     <color name="foLogin">#202148</color>
     <color name="colorRe">#20FFFFFF</color>
+    <color name="colorReprobado">#ff0500</color>
+    <color name="colorAprobado">#094293</color>
+    <color name="colorFaltante">#555555</color>
 </resources>
