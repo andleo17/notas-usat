@@ -104,6 +104,7 @@
             android:id="@+id/cardView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:cardBackgroundColor="@android:color/transparent"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="@+id/textView19"
