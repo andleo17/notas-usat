@@ -26,11 +26,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
+
     public void login(View view){
         EditText nickname = (EditText)findViewById(R.id.txtNickname);
         EditText password = (EditText)findViewById(R.id.txtPassword);
-        ApolloClient apolloClient = ApolloClient.builder().serverUrl("https://notas-gql.herokuapp.com/graphql/endpoint").build();
-        apolloClient.query(new LoginQuery(nickname.getText().toString(), password.getText().toString()))
+        ApolloKt.apolloClient(this).query(new LoginQuery(nickname.getText().toString(), password.getText().toString()))
                 .enqueue(new ApolloCall.Callback<LoginQuery.Data>() {
                     @Override
                     public void onResponse(@NotNull Response<LoginQuery.Data> response) {
