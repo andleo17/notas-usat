@@ -9,4 +9,5 @@
     <color name="colorReprobado">#ff0500</color>
     <color name="colorAprobado">#094293</color>
     <color name="colorFaltante">#555555</color>
+    <color name="colorMoradoClaro">#6A2DC9</color>
 </resources>
