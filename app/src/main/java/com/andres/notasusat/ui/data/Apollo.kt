@@ -1,9 +1,8 @@
-package com.andres.notasusat.ui
+package com.andres.notasusat.ui.data
 
 import android.content.Context
 import android.os.Looper
 import com.apollographql.apollo.ApolloClient
-import com.apollographql.apollo.subscription.WebSocketSubscriptionTransport
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

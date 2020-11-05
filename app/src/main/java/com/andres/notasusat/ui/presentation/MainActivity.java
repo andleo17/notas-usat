@@ -1,4 +1,4 @@
-package com.andres.notasusat.ui;
+package com.andres.notasusat.ui.presentation;
 
 import android.os.Bundle;
 import android.util.Log;

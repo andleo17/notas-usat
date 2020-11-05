@@ -1,21 +1,18 @@
-package com.andres.notasusat.ui;
+package com.andres.notasusat.ui.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.andres.notasusat.R;
+import com.andres.notasusat.ui.data.ApolloKt;
 import com.apollographql.apollo.ApolloCall;
-import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.example.LoginQuery;
-
 import org.jetbrains.annotations.NotNull;
 
 public class LoginActivity extends AppCompatActivity {
