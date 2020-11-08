@@ -1,7 +1,18 @@
 query Login($nickname: String!, $password: String!){
     login(nickname: $nickname, password: $password){
         user{
+            id
+            nickname
+            email
             name
+            lastname
+            birthDate
+            photo
+            genre
+            state
+            semesterId
+            schoolId
         }
+        token
     }
 }

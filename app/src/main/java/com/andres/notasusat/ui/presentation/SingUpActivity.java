@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.andres.notasusat.R;
+import com.andres.notasusat.ui.data.ApolloKt;
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
@@ -29,7 +30,6 @@ import java.util.ArrayList;
 
 public class SingUpActivity extends AppCompatActivity  {
 
-    ApolloClient apolloClient = ApolloClient.builder().serverUrl("https://notas-gql.herokuapp.com/graphql/endpoint").build();
     String semester;
     Integer schoolId;
     Boolean genreSelected;
@@ -40,27 +40,39 @@ public class SingUpActivity extends AppCompatActivity  {
         ArrayList<String> listSemesters = new ArrayList<>();
         ArrayList<String> listSchool = new ArrayList<>();
         ArrayList<Integer> listSchoolId = new ArrayList<>();
-        apolloClient.query(new SemestersQuery()).enqueue(new ApolloCall.Callback<SemestersQuery.Data>() {
+        ApolloKt.apolloClient(this).query(new SemestersQuery()).enqueue(new ApolloCall.Callback<SemestersQuery.Data>() {
             @Override
             public void onResponse(@NotNull Response<SemestersQuery.Data> response) {
-                for(int i = 0; i < response.getData().semesters().size() ; i++){
-                    listSemesters.add(response.getData().semesters().get(i).name());
-                    Log.e("Apollo", "Semestre: " + listSemesters);
-                }
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        setSemesters(listSemesters);
+                try {
+                    for(int i = 0; i < response.getData().semesters().size() ; i++){
+                        listSemesters.add(response.getData().semesters().get(i).name());
+                        Log.e("Apollo", "Semestre: " + listSemesters);
                     }
-                });
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            setSemesters(listSemesters);
+                        }
+                    });
+                } catch (ApolloException e){
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(SingUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
 
             @Override
             public void onFailure(@NotNull ApolloException e) {
-
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(SingUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
 
-        apolloClient.query(new SchoolsQuery()).enqueue(new ApolloCall.Callback<SchoolsQuery.Data>() {
+        ApolloKt.apolloClient(this).query(new SchoolsQuery()).enqueue(new ApolloCall.Callback<SchoolsQuery.Data>() {
             @Override
             public void onResponse(@NotNull Response<SchoolsQuery.Data> response) {
                 for(int i = 0; i < response.getData().schools().size() ; i++){
@@ -161,7 +173,7 @@ public class SingUpActivity extends AppCompatActivity  {
                 .semesterId(semester)
                 .schoolId(schoolId).build();
 
-        apolloClient.mutate(new SingUpMutation(userInput)).enqueue(new ApolloCall.Callback<SingUpMutation.Data>() {
+        ApolloKt.apolloClient(this).mutate(new SingUpMutation(userInput)).enqueue(new ApolloCall.Callback<SingUpMutation.Data>() {
             @Override
             public void onResponse(@NotNull Response<SingUpMutation.Data> response) {
                 Log.e("Apollo", "Usuario: " + response.getData().signup().user().name());

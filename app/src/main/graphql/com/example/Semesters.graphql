@@ -1,8 +1,8 @@
 query Semesters{
     semesters{
         name
-        startDate
-        finishDate
-        state
+#        startDate
+#        finishDate
+#        state
     }
 }

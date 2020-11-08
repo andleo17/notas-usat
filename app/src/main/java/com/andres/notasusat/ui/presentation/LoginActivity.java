@@ -1,6 +1,11 @@
 package com.andres.notasusat.ui.presentation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,19 +19,71 @@ import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.example.LoginQuery;
 import org.jetbrains.annotations.NotNull;
+import java.util.concurrent.Executor;
+
+
 
 public class LoginActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        BiometricManager biometricManager = BiometricManager.from(this);
+
+        switch (biometricManager.canAuthenticate()){
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                Toast.makeText(LoginActivity.this,"USE EL SENSOR DACTILAR PARA ACCEDER" , Toast.LENGTH_LONG).show();
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                Toast.makeText(LoginActivity.this,"EL DISPOSITIVO NO CUENTA CON SENSOR DACTILAR" , Toast.LENGTH_LONG).show();
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                Toast.makeText(LoginActivity.this,"SENSOR DACTILAR NO DISPONIBLE" , Toast.LENGTH_LONG).show();
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                Toast.makeText(LoginActivity.this,"SENSOR DACTILAR NO CONFIGURADO" , Toast.LENGTH_LONG).show();
+                break;
+        }
+
+        Executor executor = ContextCompat.getMainExecutor(this);
+
+        BiometricPrompt biometricPrompt = new BiometricPrompt(LoginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(LoginActivity.this,"AUNTENTICACIÓN CORRECTA!!!" , Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Acceder")
+                .setDescription("Toque el sensor dactilar para acceder")
+                .setNegativeButtonText("Cancelar")
+                .build();
+
+        biometricPrompt.authenticate(promptInfo);
+
     }
 
 
     public void login(View view){
         EditText nickname = (EditText)findViewById(R.id.txtNickname);
         EditText password = (EditText)findViewById(R.id.txtPassword);
+
         ApolloKt.apolloClient(this).query(new LoginQuery(nickname.getText().toString(), password.getText().toString()))
                 .enqueue(new ApolloCall.Callback<LoginQuery.Data>() {
                     @Override
@@ -51,6 +108,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NotNull ApolloException e) {
                         Log.e("Apollo", "Error", e);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                 });
     }
