@@ -7,6 +7,7 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,12 +27,75 @@ import java.util.concurrent.Executor;
 public class LoginActivity extends AppCompatActivity {
 
 
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
 
+        if(preferences.getInt("userID", 0) > 0){
+            openMainActivity();
+        }
+        //biometricSecurity();
+    }
+
+
+    public void login(View view){
+        EditText nickname = (EditText)findViewById(R.id.txtNickname);
+        EditText password = (EditText)findViewById(R.id.txtPassword);
+
+
+        ApolloKt.apolloClient(this).query(new LoginQuery(nickname.getText().toString(), password.getText().toString()))
+                .enqueue(new ApolloCall.Callback<LoginQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<LoginQuery.Data> response) {
+                        try {
+                            Log.e("Apollo", "Usuario: " + response.getData().login().user().name());
+
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    SharedPreferences.Editor editor = preferences.edit();
+                                    editor.putInt("userID", Integer.parseInt(response.getData().login().user().id()));
+                                    editor.putString("nickname", response.getData().login().user().nickname());
+                                    editor.commit();
+                                    Toast.makeText(LoginActivity.this, "Hola " +response.getData().login().user().name(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            openMainActivity();
+                        }catch (Exception e){
+                            Log.e("Apollo", "Usuario: " + response.errors().get(0).message());
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    Toast.makeText(LoginActivity.this, response.errors().get(0).message(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.e("Apollo", "Error", e);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                });
+    }
+
+    private void openMainActivity(){
+        Intent principal = new Intent(this, MainActivity.class);
+        startActivity(principal);
+    }
+
+    public void openSingUp(View view){
+        Intent singUp = new Intent(this, SingUpActivity.class);
+        startActivity(singUp);
+    }
+
+    public  void biometricSecurity(){
         BiometricManager biometricManager = BiometricManager.from(this);
 
         switch (biometricManager.canAuthenticate()){
@@ -76,54 +140,5 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         biometricPrompt.authenticate(promptInfo);
-
-    }
-
-
-    public void login(View view){
-        EditText nickname = (EditText)findViewById(R.id.txtNickname);
-        EditText password = (EditText)findViewById(R.id.txtPassword);
-
-        ApolloKt.apolloClient(this).query(new LoginQuery(nickname.getText().toString(), password.getText().toString()))
-                .enqueue(new ApolloCall.Callback<LoginQuery.Data>() {
-                    @Override
-                    public void onResponse(@NotNull Response<LoginQuery.Data> response) {
-                        try {
-                            Log.e("Apollo", "Usuario: " + response.getData().login().user().name());
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(LoginActivity.this, "Hola " +response.getData().login().user().name(), Toast.LENGTH_LONG).show();
-                                }
-                            });
-                            openMainActivity();
-                        }catch (Exception e){
-                            Log.e("Apollo", "Usuario: " + response.errors().get(0).message());
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(LoginActivity.this, response.errors().get(0).message(), Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                    }
-                    @Override
-                    public void onFailure(@NotNull ApolloException e) {
-                        Log.e("Apollo", "Error", e);
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                });
-    }
-
-    private void openMainActivity(){
-        Intent principal = new Intent(this, MainActivity.class);
-        startActivity(principal);
-    }
-
-    public void openSingUp(View view){
-        Intent singUp = new Intent(this, SingUpActivity.class);
-        startActivity(singUp);
     }
 }

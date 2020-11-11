@@ -1,7 +1,11 @@
 package com.andres.notasusat.ui.presentation;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.andres.notasusat.R;
 import com.apollographql.apollo.ApolloCall;
@@ -21,6 +25,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +40,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //        NavigationUI.setupWithNavController(navView, navController);
+        SharedPreferences preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
+        TextView textView = findViewById(R.id.nicknameM);
 
+        textView.setText(preferences.getString("nickname", "No funcionó"));
 
 
     }
 
-
+    public void openPerfil(View view){
+        Intent principal = new Intent(this, PerfilActivity.class);
+        startActivity(principal);
+    }
 
 }

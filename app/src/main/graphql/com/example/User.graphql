@@ -1,6 +1,23 @@
 query User($id:Int!){
     user(id: $id){
+        id
         nickname
         email
+        name
+        lastname
+        birthDate
+        photo
+        genre
+        state
+        semester{
+            name
+        }
+        school{
+            id
+            name
+            faculty{
+                name
+            }
+        }
     }
 }

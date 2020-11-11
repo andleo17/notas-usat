@@ -14,7 +14,7 @@
     android:background="@color/colorMoradoClaro">
 
     <TextView
-        android:id="@+id/textNombreApellidoPerfil"
+        android:id="@+id/lblCompleteNamePerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNombreApellidoPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/lblCompleteNamePerfil" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -42,7 +42,7 @@
         android:layout_marginTop="20dp"
         android:background="@color/foLogin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtfacultadyescuela">
+        app:layout_constraintTop_toBottomOf="@+id/lblFacultyPerfil">
 
         <TextView
             android:id="@+id/Nickname"
@@ -70,9 +70,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Apellidos"
-            app:layout_constraintEnd_toEndOf="@+id/inputEmailPerfil"
-            app:layout_constraintStart_toStartOf="@+id/inputEmailPerfil"
-            app:layout_constraintTop_toBottomOf="@+id/inputEmailPerfil" />
+            app:layout_constraintEnd_toEndOf="@+id/inputNamePerfil"
+            app:layout_constraintStart_toStartOf="@+id/inputNamePerfil"
+            app:layout_constraintTop_toBottomOf="@+id/inputNamePerfil" />
 
         <TextView
             android:id="@+id/textView10"
@@ -80,9 +80,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Correo electrónico"
-            app:layout_constraintEnd_toEndOf="@+id/inputNamePerfil"
-            app:layout_constraintStart_toStartOf="@+id/inputNamePerfil"
-            app:layout_constraintTop_toBottomOf="@+id/inputNamePerfil" />
+            app:layout_constraintEnd_toEndOf="@+id/inputLastNamePerfil"
+            app:layout_constraintStart_toStartOf="@+id/inputLastNamePerfil"
+            app:layout_constraintTop_toBottomOf="@+id/inputLastNamePerfil" />
 
         <TextView
             android:id="@+id/textView11"
@@ -90,9 +90,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Fecha de nacimiento"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+            app:layout_constraintEnd_toEndOf="@+id/inputEmailPerfil"
+            app:layout_constraintStart_toStartOf="@+id/inputEmailPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/inputEmailPerfil" />
 
         <TextView
             android:id="@+id/textView13"
@@ -100,9 +100,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Género"
-            app:layout_constraintEnd_toEndOf="@+id/editTextDate"
-            app:layout_constraintStart_toStartOf="@+id/editTextDate"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+            app:layout_constraintEnd_toEndOf="@+id/inputBirthdayPerfil"
+            app:layout_constraintStart_toStartOf="@+id/inputBirthdayPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/inputBirthdayPerfil" />
 
         <TextView
             android:id="@+id/textView7"
@@ -119,12 +119,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/inputNamePerfil"
+            android:id="@+id/inputLastNamePerfil"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/radiusinput"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="@+id/Apellidos"
             app:layout_constraintHorizontal_bias="0.0"
@@ -132,12 +132,12 @@
             app:layout_constraintTop_toBottomOf="@+id/Apellidos" />
 
         <EditText
-            android:id="@+id/inputEmailPerfil"
+            android:id="@+id/inputNamePerfil"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/radiusinput"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="@+id/Nombre"
             app:layout_constraintStart_toStartOf="@+id/Nombre"
@@ -149,14 +149,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/radiusinput"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="@+id/Nickname"
             app:layout_constraintStart_toStartOf="@+id/Nickname"
             app:layout_constraintTop_toBottomOf="@+id/Nickname" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/inputEmailPerfil"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/radiusinput"
@@ -168,7 +168,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/inputBirthdayPerfil"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/radiusinput"
@@ -188,12 +188,12 @@
             android:background="@drawable/radius"
             android:text="Guardar cambios"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/spinner"
-            app:layout_constraintStart_toStartOf="@+id/spinner"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            app:layout_constraintEnd_toEndOf="@+id/spinnerGenrePerfil"
+            app:layout_constraintStart_toStartOf="@+id/spinnerGenrePerfil"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerGenrePerfil" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerGenrePerfil"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/radiusinput"
@@ -204,7 +204,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/txtfacultadyescuela"
+        android:id="@+id/lblFacultyPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
