@@ -186,6 +186,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/radius"
+            android:onClick="saveChanges"
             android:text="Guardar cambios"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/spinnerGenrePerfil"

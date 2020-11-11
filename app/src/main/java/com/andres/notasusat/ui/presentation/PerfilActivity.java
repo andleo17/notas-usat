@@ -19,7 +19,10 @@ import com.andres.notasusat.ui.data.ApolloKt;
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
+import com.example.ModifyUserMutation;
+import com.example.SingUpMutation;
 import com.example.UserQuery;
+import com.example.type.UserInput;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -59,9 +62,9 @@ public class PerfilActivity extends AppCompatActivity {
         lblFaculty = findViewById(R.id.lblFacultyPerfil);
         lblCompleteName = findViewById(R.id.lblCompleteNamePerfil);
 
-
         SharedPreferences preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
         id = preferences.getInt("userID", 0);
+
 
         if (id > 0 ){
             setPerfil(id);
@@ -141,4 +144,52 @@ public class PerfilActivity extends AppCompatActivity {
         spGenre.setSelection(genre ? 0 : 1);
     }
 
+    public void saveChanges(View view) {
+        SharedPreferences preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
+        id = preferences.getInt("userID", 0);
+
+
+        UserInput userInput = UserInput.builder()
+                .nickname(txtNickname.getText().toString())
+                .name(txtName.getText().toString())
+                .lastname(txtLastName.getText().toString())
+                .birthDate(txtBirthday.getText().toString())
+                .email(txtEmail.getText().toString())
+                .photo("fotoperfil.png")
+                .genre(genreSelected)
+                .build();
+
+        ApolloKt.apolloClient(this).mutate(new ModifyUserMutation(userInput, id )).enqueue(new ApolloCall.Callback<ModifyUserMutation.Data>() {
+            @Override
+            public void onResponse(@NotNull Response<ModifyUserMutation.Data> response) {
+                try {
+                    Log.e("Apollo", "Usuario: " + response.getData().modifyUser().name());
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(PerfilActivity.this, "Cambios guardados correctamente", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }catch (Exception e){
+                    Log.e("Apollo", "Usuario: " + response.errors().get(0).message());
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(PerfilActivity.this, response.errors().get(0).message(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+                Log.e("Apollo", "Error", e);
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(PerfilActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+    }
 }
