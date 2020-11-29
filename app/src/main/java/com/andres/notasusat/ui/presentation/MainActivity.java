@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.andres.notasusat.R;
+import com.andres.notasusat.ui.data.DatabaseHelper;
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
@@ -16,6 +17,7 @@ import com.example.UserQuery;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.ActionOnlyNavDirections;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -37,19 +39,19 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //        NavigationUI.setupWithNavController(navView, navController);
         SharedPreferences preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
-        TextView textView = findViewById(R.id.nicknameM);
 
-        textView.setText(preferences.getString("nickname", "No funcionó"));
 
+        DatabaseHelper conn = new DatabaseHelper(this, "Notas_USAT", null, 1);
+        
 
     }
 
     public void openPerfil(View view){
-        Intent principal = new Intent(this, PerfilActivity.class);
+        Intent principal = new Intent(this, CursoActivity.class);
         startActivity(principal);
     }
 

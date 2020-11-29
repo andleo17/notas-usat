@@ -1,9 +1,11 @@
 package com.andres.notasusat.ui.presentation;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +28,11 @@ import com.example.type.UserInput;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 public class PerfilActivity extends AppCompatActivity {
@@ -74,6 +81,7 @@ public class PerfilActivity extends AppCompatActivity {
     private void setPerfil(Integer userID){
         ApolloKt.apolloClient(this).query(new UserQuery(userID))
                 .enqueue(new ApolloCall.Callback<UserQuery.Data>() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onResponse(@NotNull Response<UserQuery.Data> response) {
                        try{

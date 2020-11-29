@@ -19,6 +19,7 @@
         <activity
             android:name=".NAVI"
             android:label="@string/title_activity_n_a_v_i"></activity>
+        <activity android:name=".ui.presentation.CursoActivity"></activity>
         <activity android:name=".ui.presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
