@@ -1,5 +1,10 @@
 package com.andres.notasusat.ui.business;
 
+import com.andres.notasusat.ui.data.DatabaseHelper;
+
+import java.sql.Blob;
+import java.util.ArrayList;
+
 public class Course {
 
     private Integer id;
@@ -8,17 +13,9 @@ public class Course {
     private String teacher;
     private Integer credits;
     private Integer grade;
-    private Boolean state;
+    private Integer state;
 
-    public Course(Integer id, String code, String name, String teacher, Integer credits, Integer grade, Boolean state) {
-        this.id = id;
-        this.code = code;
-        this.name = name;
-        this.teacher = teacher;
-        this.credits = credits;
-        this.grade = grade;
-        this.state = state;
-    }
+
 
     public Integer getId() {
         return id;
@@ -68,11 +65,11 @@ public class Course {
         this.grade = grade;
     }
 
-    public Boolean getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(Boolean state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 }

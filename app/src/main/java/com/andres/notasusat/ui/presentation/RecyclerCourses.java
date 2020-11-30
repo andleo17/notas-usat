@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.andres.notasusat.R;
 import com.andres.notasusat.ui.business.Course;
+import com.andres.notasusat.ui.data.DatabaseHelper;
 
 import java.util.List;
 
 public class RecyclerCourses extends RecyclerView.Adapter<RecyclerCourses.ViewHolder> {
+
+    DatabaseHelper conn;
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

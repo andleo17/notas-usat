@@ -16,14 +16,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(Utilities.CREATE_TABLE_COURSE);
-        db.execSQL(Utilities.CREATE_TABLE_UNITY);
-        db.execSQL(Utilities.CREATE_TABLE_ACTIVITY);
+        db.execSQL("CREATE TABLE course (id INTEGER PRIMARY KEY AUTOINCREMENT, code TEXT, name TEXT, teacher TEXT, credits INTEGER, grade INTEGER, state INTEGER)");
 
+//        db.execSQL("INSERT INTO course (code , name , teacher, credits, grade, state) VALUES ('GAA1', 'Curso 01', 'Juan Perez', 3, 20, 1)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS course");
+        onCreate(db);
     }
 }

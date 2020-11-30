@@ -10,7 +10,7 @@ public class Utilities {
     public static final String COLUMN_GRADE_COURSE = "grade";
     public static final String COLUMN_STATE_COURSE = "state";
     public static final String CREATE_TABLE_COURSE = "CREATE TABLE " + TABLE_COURSE +" (" +  COLUMN_ID_COURSE +
-                            " INTEGER, " + COLUMN_CODE_COURSE + " TEXT, " +  COLUMN_NAME_COURSE + " TEXT, " +
+                            " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_CODE_COURSE + " TEXT, " +  COLUMN_NAME_COURSE + " TEXT, " +
                             COLUMN_TEACHER_COURSE + " TEXT, "+COLUMN_GRADE_COURSE+ " INTEGER, " + COLUMN_STATE_COURSE+
                             " BOOLEAN); ";
 
@@ -20,7 +20,7 @@ public class Utilities {
     public static final String COLUMN_DESCRIPTION_UNITY = "description";
     public static final String COLUMN_WEIGHT_UNITY = "weight";
     public static final String COLUMN_GRADE_UNITY = "grade";
-    public static final String CREATE_TABLE_UNITY = "CREATE TABLE "+TABLE_UNITY+ " ("+COLUMN_ID_UNITY+ " INTEGER, "+
+    public static final String CREATE_TABLE_UNITY = "CREATE TABLE "+TABLE_UNITY+ " ("+COLUMN_ID_UNITY+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
                             COLUMN_DESCRIPTION_UNITY+ " TEXT, "+COLUMN_WEIGHT_UNITY+ " REAL, "+ COLUMN_GRADE_UNITY+ " REAL);";
 
 
@@ -29,7 +29,7 @@ public class Utilities {
     public static final String COLUMN_DESCRIPTION_ACTIVITY = "description";
     public static final String COLUMN_WEIGHT_ACTIVITY = "weight";
     public static final String COLUMN_GRADE_ACTIVITY = "grade";
-    public static final String CREATE_TABLE_ACTIVITY = "CREATE TABLE "+TABLE_ACTIVITY+ " ("+COLUMN_ID_ACTIVITY+ " INTEGER, "+
+    public static final String CREATE_TABLE_ACTIVITY = "CREATE TABLE "+TABLE_ACTIVITY+ " ("+COLUMN_ID_ACTIVITY+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
             COLUMN_DESCRIPTION_ACTIVITY+ " TEXT, "+COLUMN_WEIGHT_ACTIVITY+ " REAL, "+ COLUMN_GRADE_ACTIVITY+ " REAL);";
 
 
