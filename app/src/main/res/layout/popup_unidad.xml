@@ -25,29 +25,33 @@
 
 
     <ImageView
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/saveButtonNewUnity"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/radius"
         android:padding="@dimen/cardview_default_elevation"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/idnuevosemestre"
-        app:layout_constraintTop_toBottomOf="@+id/idnuevosemestre"
+        app:layout_constraintEnd_toEndOf="@+id/txtDescriptionNewUnity"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescriptionNewUnity"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_baseline_done_24" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/radius"
         android:padding="@dimen/cardview_default_elevation"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/idnuevosemestre"
-        app:layout_constraintTop_toBottomOf="@+id/idnuevosemestre"
+        app:layout_constraintStart_toStartOf="@+id/txtDescriptionNewUnity"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescriptionNewUnity"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_baseline_cancel_24" />
 
     <TextView
@@ -60,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/idtextsemestre"
+        android:id="@+id/txtWeightNewUnity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radiusinput"
@@ -77,12 +81,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Descripción"
-        app:layout_constraintEnd_toEndOf="@+id/idtextsemestre"
-        app:layout_constraintStart_toStartOf="@+id/idtextsemestre"
-        app:layout_constraintTop_toBottomOf="@+id/idtextsemestre" />
+        app:layout_constraintEnd_toEndOf="@+id/txtWeightNewUnity"
+        app:layout_constraintStart_toStartOf="@+id/txtWeightNewUnity"
+        app:layout_constraintTop_toBottomOf="@+id/txtWeightNewUnity" />
 
     <EditText
-        android:id="@+id/idnuevosemestre"
+        android:id="@+id/txtDescriptionNewUnity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radiusinput"

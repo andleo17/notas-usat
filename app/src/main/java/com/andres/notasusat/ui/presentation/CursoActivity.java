@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import com.andres.notasusat.R;
 import com.andres.notasusat.ui.business.Course;
 import com.andres.notasusat.ui.data.DatabaseHelper;
-import com.andres.notasusat.ui.data.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,12 +44,28 @@ public class CursoActivity extends AppCompatActivity {
         setCourses();
     }
 
+    public void openDetailCourse(Integer idCourse, String nameCourse){
+        Intent principal = new Intent(this, DetalleCursoActivity.class);
+        Bundle myBundle = new Bundle();
+        myBundle.putInt("idCourse", idCourse);
+        myBundle.putString("nameCourse", nameCourse);
+        principal.putExtras(myBundle);
+        startActivity(principal);
+    }
+
     private  void setCourses(){
         recyclerViewCursoo = (RecyclerView)findViewById(R.id.recyclerCourses);
         recyclerViewCursoo.setLayoutManager(new LinearLayoutManager( this));
 
         adaptadorCurso = new RecyclerCourses(getCursos());
         recyclerViewCursoo.setAdapter(adaptadorCurso);
+
+        adaptadorCurso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDetailCourse(getCursos().get(recyclerViewCursoo.getChildAdapterPosition(v)).getId(), getCursos().get(recyclerViewCursoo.getChildAdapterPosition(v)).getName());
+            }
+        });
     }
 
     public List<Course> getCursos() {
@@ -94,7 +109,7 @@ public class CursoActivity extends AppCompatActivity {
         credits = (EditText) coursePopup.findViewById(R.id.txtCreditsNewCourse);
         group = (EditText) coursePopup.findViewById(R.id.txtGroupNewCourse);
         code = (EditText) coursePopup.findViewById(R.id.txtCodeNewCourse);
-        saveButton = (ImageView) coursePopup.findViewById(R.id.saveButton);
+        saveButton = (ImageView) coursePopup.findViewById(R.id.saveButtonNewUnity);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override

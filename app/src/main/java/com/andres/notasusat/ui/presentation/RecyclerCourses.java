@@ -14,14 +14,17 @@ import com.andres.notasusat.ui.data.DatabaseHelper;
 
 import java.util.List;
 
-public class RecyclerCourses extends RecyclerView.Adapter<RecyclerCourses.ViewHolder> {
+public class RecyclerCourses extends RecyclerView.Adapter<RecyclerCourses.ViewHolder> implements View.OnClickListener {
 
     DatabaseHelper conn;
+
+    private View.OnClickListener listener;
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_cursos, parent,false );
         ViewHolder viewHolder = new ViewHolder(view);
+        view.setOnClickListener(this);
         return viewHolder;
     }
 
@@ -29,7 +32,6 @@ public class RecyclerCourses extends RecyclerView.Adapter<RecyclerCourses.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.nombre.setText(cursoLista.get(position).getName());
         holder.nota.setText(cursoLista.get(position).getGrade().toString());
-
     }
 
     @Override
@@ -37,9 +39,19 @@ public class RecyclerCourses extends RecyclerView.Adapter<RecyclerCourses.ViewHo
         return cursoLista.size();
     }
 
+    public  void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(listener != null){
+            listener.onClick(v);
+        }
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView nombre, nota;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -7,12 +7,6 @@ public class Unity {
     private Float weight;
     private Float grade;
 
-    public Unity(Integer id, String description, Float weight, Float grade) {
-        this.id = id;
-        this.description = description;
-        this.weight = weight;
-        this.grade = grade;
-    }
 
     public Integer getId() {
         return id;

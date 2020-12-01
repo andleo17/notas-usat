@@ -26,9 +26,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Nombre"
-        app:layout_constraintEnd_toEndOf="@+id/idnuevosemestre"
-        app:layout_constraintStart_toStartOf="@+id/idnuevosemestre"
-        app:layout_constraintTop_toBottomOf="@+id/idnuevosemestre" />
+        app:layout_constraintEnd_toEndOf="@+id/txtDescriptionNewUnity"
+        app:layout_constraintStart_toStartOf="@+id/txtDescriptionNewUnity"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescriptionNewUnity" />
 
     <TextView
         android:id="@+id/textView8"
@@ -48,7 +48,7 @@
 
 
     <ImageView
-        android:id="@+id/saveButton"
+        android:id="@+id/saveButtonNewUnity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/idtextsemestre"
+        android:id="@+id/txtWeightNewUnity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -104,12 +104,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Fecha Fin"
-        app:layout_constraintEnd_toEndOf="@+id/idtextsemestre"
-        app:layout_constraintStart_toStartOf="@+id/idtextsemestre"
-        app:layout_constraintTop_toBottomOf="@+id/idtextsemestre" />
+        app:layout_constraintEnd_toEndOf="@+id/txtWeightNewUnity"
+        app:layout_constraintStart_toStartOf="@+id/txtWeightNewUnity"
+        app:layout_constraintTop_toBottomOf="@+id/txtWeightNewUnity" />
 
     <EditText
-        android:id="@+id/idnuevosemestre"
+        android:id="@+id/txtDescriptionNewUnity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/radiusinput"
