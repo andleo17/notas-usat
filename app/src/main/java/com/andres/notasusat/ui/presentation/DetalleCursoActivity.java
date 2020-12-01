@@ -42,12 +42,12 @@ public class DetalleCursoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_curso);
         Bundle myBundle = this.getIntent().getExtras();
         TextView lblNameCourse = findViewById(R.id.lblNameCourseDetail);
-        setUnities();
         if(myBundle != null){
             idCourse = myBundle.getInt("idCourse");
             nameCourse = myBundle.getString("nameCourse");
             lblNameCourse.setText(nameCourse);
         }
+        setUnities();
 
     }
 
@@ -73,7 +73,7 @@ public class DetalleCursoActivity extends AppCompatActivity {
             SQLiteDatabase db = conn.getReadableDatabase();
 //            db.execSQL("INSERT INTO course (code , name , teacher, credits, grade, state) VALUES ('GAA1', 'Curso 01', 'Juan Perez', 3, 20, 1)");
             Unity unity = null;
-            Cursor cursor = db.rawQuery("SELECT * FROM unity", null );
+            Cursor cursor = db.rawQuery("SELECT * FROM unity WHERE idCourse="+ idCourse, null );
 //
             while (cursor.moveToNext()){
                 Log.e("Unidad",cursor.getString(0) );

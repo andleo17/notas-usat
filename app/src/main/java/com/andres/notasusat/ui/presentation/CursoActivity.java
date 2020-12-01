@@ -63,6 +63,8 @@ public class CursoActivity extends AppCompatActivity {
         adaptadorCurso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("Curso seleccionado", getCursos().get(recyclerViewCursoo.getChildAdapterPosition(v)).getId().toString());
+
                 openDetailCourse(getCursos().get(recyclerViewCursoo.getChildAdapterPosition(v)).getId(), getCursos().get(recyclerViewCursoo.getChildAdapterPosition(v)).getName());
             }
         });
