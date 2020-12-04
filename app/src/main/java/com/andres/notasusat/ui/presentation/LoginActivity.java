@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         if(preferences.getInt("userID", 0) > 0){
             openMainActivity();
         }
-        biometricSecurity();
+        //biometricSecurity();
     }
 
 

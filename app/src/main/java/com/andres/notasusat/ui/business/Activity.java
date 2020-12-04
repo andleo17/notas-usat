@@ -6,12 +6,6 @@ public class Activity {
     private Float weight;
     private Float grade;
 
-    public Activity(Integer id, String name, Float weight, Float grade) {
-        this.id = id;
-        this.description = name;
-        this.weight = weight;
-        this.grade = grade;
-    }
 
     public Integer getId() {
         return id;
@@ -21,12 +15,12 @@ public class Activity {
         this.id = id;
     }
 
-    public String getName() {
+    public String getDescription() {
         return description;
     }
 
-    public void setName(String name) {
-        this.description = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Float getWeight() {

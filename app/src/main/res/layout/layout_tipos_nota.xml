@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/lblGradeActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20.00"
@@ -28,17 +28,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/lblDescriptionActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:text="practica 1"
                 android:textColor="#000"
-                app:layout_constraintStart_toEndOf="@+id/textView25"
+                app:layout_constraintStart_toEndOf="@+id/lblWeightActivity"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/lblWeightActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="50%"

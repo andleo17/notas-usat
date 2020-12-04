@@ -25,7 +25,9 @@ import java.util.List;
 public class DetalleCursoActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewUnidad;
+    private RecyclerView recyclerViewActividad;
     private RecyclerUnity adaptadorUnidad;
+    private RecyclerUnity adaptadorActividad;
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog alertDialog;
@@ -34,6 +36,7 @@ public class DetalleCursoActivity extends AppCompatActivity {
     private EditText weight;
     private ImageView saveButton;
     private Integer idCourse;
+    private Integer idUnity;
     private String nameCourse;
 
     @Override
@@ -57,8 +60,22 @@ public class DetalleCursoActivity extends AppCompatActivity {
 
         adaptadorUnidad = new RecyclerUnity(getUnities());
         recyclerViewUnidad.setAdapter(adaptadorUnidad);
-
         adaptadorUnidad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    private  void setActivities(){
+        recyclerViewActividad = (RecyclerView)findViewById(R.id.recyclerActivity);
+        recyclerViewActividad.setLayoutManager(new LinearLayoutManager( this));
+
+        adaptadorActividad = new RecyclerUnity(getUnities());
+        recyclerViewActividad.setAdapter(adaptadorActividad);
+
+        adaptadorActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -74,6 +91,32 @@ public class DetalleCursoActivity extends AppCompatActivity {
 //            db.execSQL("INSERT INTO course (code , name , teacher, credits, grade, state) VALUES ('GAA1', 'Curso 01', 'Juan Perez', 3, 20, 1)");
             Unity unity = null;
             Cursor cursor = db.rawQuery("SELECT * FROM unity WHERE idCourse="+ idCourse, null );
+//
+            while (cursor.moveToNext()){
+                Log.e("Unidad",cursor.getString(0) );
+                unity = new Unity();
+                unity.setId(cursor.getInt(0));
+                unity.setDescription(cursor.getString(1));
+                unity.setWeight(cursor.getFloat(2));
+                unity.setGrade(cursor.getFloat(3));
+                unityList.add(unity);
+            }
+        }
+        catch (Exception e){
+            Log.e("Apollo", e.getMessage());
+        }
+
+        return unityList;
+    }
+
+    public List<Unity> getActivities() {
+        List<Unity> unityList = new ArrayList<>();
+        try {
+            DatabaseHelper conn = new DatabaseHelper(this, "Notas_USAT", null, 1);
+            SQLiteDatabase db = conn.getReadableDatabase();
+//            db.execSQL("INSERT INTO course (code , name , teacher, credits, grade, state) VALUES ('GAA1', 'Curso 01', 'Juan Perez', 3, 20, 1)");
+            Unity unity = null;
+            Cursor cursor = db.rawQuery("SELECT * FROM activity WHERE idUnity="+ idUnity, null );
 //
             while (cursor.moveToNext()){
                 Log.e("Unidad",cursor.getString(0) );
