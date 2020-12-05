@@ -64,10 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putInt("userID", Integer.parseInt(user.id()));
                                 editor.putString("nickname", user.nickname());
+                                editor.putString("token", response.getData().login().token());
                                 editor.apply();
                                 Toast.makeText(LoginActivity.this, "Hola " + user.name() + " " + user.lastname(), Toast.LENGTH_LONG).show();
                             }
                         });
+                        openMainActivity();
                     }
                     @Override
                     public void onFailure(@NotNull ApolloException e) {
@@ -79,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void openMainActivity(){
         Intent principal = new Intent(this, MainActivity.class);
+        principal.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(principal);
     }
 

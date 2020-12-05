@@ -23,7 +23,7 @@ class User {
     var semesterId: String? = null
     var schoolId: String? = null
 
-    suspend fun login(nickname: String, password: String, context: Context): User {
+    suspend fun login(nickname: String, password: String): User {
         val user = User()
         try {
             val response = apolloClient().query(LoginQuery( nickname, password)).await()
