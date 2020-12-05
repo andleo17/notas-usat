@@ -1,16 +1,14 @@
-package com.andres.notasusat.ui;
+package com.andres.notasusat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.andres.notasusat.R;
-
-public class DetalleCursoActivity extends AppCompatActivity {
+public class calcularnotas extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_curso);
+        setContentView(R.layout.activity_calcularnotas);
     }
 }

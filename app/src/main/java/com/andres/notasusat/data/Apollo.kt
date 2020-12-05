@@ -1,11 +1,8 @@
-package com.andres.notasusat
+package com.andres.notasusat.data
 
 import android.content.Context
 import android.os.Looper
 import com.apollographql.apollo.ApolloClient
-import com.apollographql.apollo.cache.normalized.lru.EvictionPolicy
-import com.apollographql.apollo.cache.normalized.lru.LruNormalizedCacheFactory
-import com.apollographql.apollo.subscription.WebSocketSubscriptionTransport
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -26,8 +23,7 @@ fun apolloClient(): ApolloClient {
             .build()
 
     instance = ApolloClient.builder()
-            .serverUrl("http://192.168.1.16:4000")
-//            .subscriptionTransportFactory(WebSocketSubscriptionTransport.Factory("ws://192.168.1.16:4000/graphql", okHttpClient))
+            .serverUrl("https://notas-gql.herokuapp.com/graphql/endpoint")
             .okHttpClient(okHttpClient)
             .build()
 
@@ -37,7 +33,7 @@ fun apolloClient(): ApolloClient {
 private class AuthorizationInterceptor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiVVNFUiJ9.V4ZQ7c89g1z39DB_U7BzrXzFsQbKtlXPFLUXqw1unfk")
+                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4ifQ.F4OwT6QvJri94etMcbawGbpu6mBs_81A8lg3OWSAdZk")
                 .build()
 
         return chain.proceed(request)

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/radiosconmorado"
+    android:onClick="addCourse">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="NUEVO CURSO"
+        android:textAlignment="center"
+        android:textColor="@color/colorMoradoClaro"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <EditText
+        android:id="@+id/txtNameNewCourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView31"
+        app:layout_constraintStart_toStartOf="@+id/textView31"
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Docento"
+        app:layout_constraintEnd_toEndOf="@+id/txtNameNewCourse"
+        app:layout_constraintStart_toStartOf="@+id/txtNameNewCourse"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameNewCourse" />
+
+    <EditText
+        android:id="@+id/txtTeacherNewCourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView38"
+        app:layout_constraintStart_toStartOf="@+id/textView38"
+        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Créditos"
+        app:layout_constraintEnd_toEndOf="@+id/txtTeacherNewCourse"
+        app:layout_constraintStart_toStartOf="@+id/txtTeacherNewCourse"
+        app:layout_constraintTop_toBottomOf="@+id/txtTeacherNewCourse" />
+
+    <EditText
+        android:id="@+id/txtCreditsNewCourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView39"
+        app:layout_constraintStart_toStartOf="@+id/textView39"
+        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Código"
+        app:layout_constraintEnd_toEndOf="@+id/txtCreditsNewCourse"
+        app:layout_constraintStart_toStartOf="@+id/txtCreditsNewCourse"
+        app:layout_constraintTop_toBottomOf="@+id/txtCreditsNewCourse" />
+
+    <EditText
+        android:id="@+id/txtCodeNewCourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView40"
+        app:layout_constraintStart_toStartOf="@+id/textView40"
+        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Grupo"
+        app:layout_constraintEnd_toEndOf="@+id/txtCodeNewCourse"
+        app:layout_constraintStart_toStartOf="@+id/txtCodeNewCourse"
+        app:layout_constraintTop_toBottomOf="@+id/txtCodeNewCourse" />
+
+    <EditText
+        android:id="@+id/txtGroupNewCourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radiusinput"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView41"
+        app:layout_constraintStart_toStartOf="@+id/textView41"
+        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+    <ImageView
+        android:id="@+id/saveButtonNewUnity"
+        android:layout_width="57dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/radius"
+        android:padding="@dimen/cardview_default_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtGroupNewCourse"
+        app:layout_constraintTop_toBottomOf="@+id/txtGroupNewCourse"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_baseline_done_24" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="62dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/radius"
+        android:padding="@dimen/cardview_default_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtGroupNewCourse"
+        app:layout_constraintTop_toBottomOf="@+id/txtGroupNewCourse"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_baseline_cancel_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

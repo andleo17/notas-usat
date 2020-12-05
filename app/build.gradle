@@ -43,4 +43,5 @@ dependencies {
     implementation 'com.apollographql.apollo:apollo-coroutines-support:2.4.1'
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'androidx.biometric:biometric:1.0.1'
 }

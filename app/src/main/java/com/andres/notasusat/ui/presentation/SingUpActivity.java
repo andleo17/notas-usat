@@ -1,4 +1,4 @@
-package com.andres.notasusat.ui;
+package com.andres.notasusat.ui.presentation;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +17,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.andres.notasusat.ApolloKt;
 import com.andres.notasusat.R;
 import com.andres.notasusat.SignUpMutation;
+import com.andres.notasusat.data.ApolloKt;
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
