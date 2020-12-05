@@ -1,12 +1,14 @@
 package com.andres.notasusat.model;
 
+import java.util.ArrayList;
+
 public class Unity {
 
     private Integer id;
     private String description;
     private Float weight;
     private Float grade;
-
+    private ArrayList<Activity> activities;
 
     public Integer getId() {
         return id;

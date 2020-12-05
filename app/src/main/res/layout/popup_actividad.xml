@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="NUEVO UNIDAD"
+        android:text="Nueva actividad"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="30sp"
@@ -25,7 +25,7 @@
 
 
     <ImageView
-        android:id="@+id/saveButtonNewActivity"
+        android:id="@+id/saveButtonNewUnity"
         android:layout_width="59dp"
         android:layout_height="54dp"
         android:layout_marginTop="8dp"

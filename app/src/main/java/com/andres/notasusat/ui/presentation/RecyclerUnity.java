@@ -3,9 +3,12 @@ package com.andres.notasusat.ui.presentation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andres.notasusat.R;
@@ -19,6 +22,8 @@ public class RecyclerUnity  extends RecyclerView.Adapter<RecyclerUnity.ViewHolde
 
     DatabaseHelper conn;
     private View.OnClickListener listener;
+    private AlertDialog.Builder dialogBuilder;
+    private  AlertDialog alertDialog;
 
     @Override
     public void onClick(View v) {
@@ -67,4 +72,34 @@ public class RecyclerUnity  extends RecyclerView.Adapter<RecyclerUnity.ViewHolde
     public RecyclerUnity(List<Unity> unidadLista){
         this.unidadLista = unidadLista;
     }
+
+//    public void OpenNewCourse (View view){
+//        dialogBuilder = new AlertDialog.Builder(view.getContext());
+//        final View activityPopup = inflate(R.layout.popup, null);
+//        name = (EditText) activityPopup.findViewById(R.id.txtNameNewCourse);
+//        teacher = (EditText) activityPopup.findViewById(R.id.txtTeacherNewCourse);
+//        credits = (EditText) activityPopup.findViewById(R.id.txtCreditsNewCourse);
+//        group = (EditText) activityPopup.findViewById(R.id.txtGroupNewCourse);
+//        code = (EditText) activityPopup.findViewById(R.id.txtCodeNewCourse);
+//        saveButton = (ImageView) activityPopup.findViewById(R.id.saveButtonNewUnity);
+//
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addCourse(
+//                        name.getText().toString(),
+//                        teacher.getText().toString(),
+//                        Integer.parseInt(credits.getText().toString()),
+//                        group.getText().toString(),
+//                        code.getText().toString()
+//                );
+//                setCourses();
+//            }
+//        });
+//
+//        dialogBuilder.setView(coursePopup);
+//        alertDialog = dialogBuilder.create();
+//        alertDialog.show();
+//
+//    }
 }

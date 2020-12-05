@@ -39,6 +39,8 @@ public class DetalleCursoActivity extends AppCompatActivity {
     private Integer idUnity;
     private String nameCourse;
 
+    private float promedio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +86,7 @@ public class DetalleCursoActivity extends AppCompatActivity {
     }
 
     public List<Unity> getUnities() {
+        promedio = 0;
         List<Unity> unityList = new ArrayList<>();
         try {
             DatabaseHelper conn = new DatabaseHelper(this, "Notas_USAT", null, 1);
@@ -100,7 +103,10 @@ public class DetalleCursoActivity extends AppCompatActivity {
                 unity.setWeight(cursor.getFloat(2));
                 unity.setGrade(cursor.getFloat(3));
                 unityList.add(unity);
+                promedio = promedio + unity.getGrade() * unity.getWeight();
             }
+            TextView txtNota = findViewById(R.id.textView2);
+            txtNota.setText(String.valueOf(promedio));
         }
         catch (Exception e){
             Log.e("Apollo", e.getMessage());

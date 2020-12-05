@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
 
         if(preferences.getInt("userID", 0) > 0){
-            openMainActivity();
+            openCourseActivity();
         }
         //biometricSecurity();
     }
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Hola " + user.name() + " " + user.lastname(), Toast.LENGTH_LONG).show();
                             }
                         });
-                        openMainActivity();
+                        openCourseActivity();
                     }
                     @Override
                     public void onFailure(@NotNull ApolloException e) {
@@ -77,6 +77,12 @@ public class LoginActivity extends AppCompatActivity {
                         runOnUiThread(() -> Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show());
                     }
                 });
+    }
+
+    private void openCourseActivity() {
+        Intent principal = new Intent(this, CursoActivity.class);
+        principal.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(principal);
     }
 
     private void openMainActivity(){

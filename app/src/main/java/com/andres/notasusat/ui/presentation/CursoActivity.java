@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.andres.notasusat.R;
 import com.andres.notasusat.model.Course;
@@ -36,6 +37,9 @@ public class CursoActivity extends AppCompatActivity {
     private EditText code;
     private EditText group;
     private ImageView saveButton;
+
+    private float promedio;
+
     DatabaseHelper conn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,7 @@ public class CursoActivity extends AppCompatActivity {
     }
 
     public List<Course> getCursos() {
+        promedio = 0;
         List<Course> courses = new ArrayList<>();
         try {
             DatabaseHelper conn = new DatabaseHelper(this, "Notas_USAT", null, 1);
@@ -90,7 +95,10 @@ public class CursoActivity extends AppCompatActivity {
                 course.setGrade(cursor.getInt(5));
                 course.setState(cursor.getInt(6));
                 courses.add(course);
+                promedio = promedio + course.getCredits() * course.getGrade();
             }
+            TextView txtPromedio = findViewById(R.id.promedioponderadodelsemestre);
+            txtPromedio.setText(String.valueOf(promedio));
         }
         catch (Exception e){
             Log.e("Apollo", e.getMessage());

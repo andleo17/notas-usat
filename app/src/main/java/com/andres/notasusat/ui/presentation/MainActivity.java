@@ -1,18 +1,20 @@
 package com.andres.notasusat.ui.presentation;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.andres.notasusat.R;
 import com.andres.notasusat.data.DatabaseHelper;
+import com.andres.notasusat.ui.dashboard.DashboardFragment;
+import com.andres.notasusat.ui.home.HomeFragment;
+import com.andres.notasusat.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,18 +23,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.mobile_navigation);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(navView, navController);
-        SharedPreferences preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
 
+        navView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    openFragment(new HomeFragment());
+                    return true;
+                case R.id.navigation_profile:
+                    openFragment(new NotificationsFragment());
+                    return true;
+                case R.id.navigation_dashboard:
+                    openFragment(new DashboardFragment());
+                    return true;
+                default:
+                    openFragment(new HomeFragment());
+                    return true;
+            }
+        });
+        navView.setSelectedItemId(R.id.navigation_home);
 
         DatabaseHelper conn = new DatabaseHelper(this, "Notas_USAT", null, 1);
         
 
+    }
+
+    private void openFragment(Fragment fragment) {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.popBackStackImmediate();
+        manager
+                .beginTransaction()
+                .replace(R.id.main_fragment, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .addToBackStack(null)
+                .commit();
     }
 
     public void openPerfil(View view){
