@@ -1,7 +1,0 @@
-query Login($nickname: String!, $password: String!){
-    login(nickname: $nickname, password: $password){
-        user{
-            name
-        }
-    }
-}

@@ -1,133 +1,166 @@
 package com.andres.notasusat.ui;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andres.notasusat.ApolloKt;
 import com.andres.notasusat.R;
+import com.andres.notasusat.SignUpMutation;
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
-import com.example.SchoolsQuery;
-import com.example.SemestersQuery;
-import com.example.SingUpMutation;
-import com.example.type.UserInput;
+import com.andres.notasusat.SchoolsQuery;
+import com.andres.notasusat.SemestersQuery;
+import com.andres.notasusat.type.UserInput;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-
+import java.util.Objects;
 
 public class SingUpActivity extends AppCompatActivity  {
-
-    ApolloClient apolloClient = ApolloClient.builder().serverUrl("https://notas-gql.herokuapp.com/graphql/endpoint").build();
+    ApolloClient apolloClient;
     String semester;
     Integer schoolId;
     Boolean genreSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
-        ArrayList<String> listSemesters = new ArrayList<>();
-        ArrayList<String> listSchool = new ArrayList<>();
-        ArrayList<Integer> listSchoolId = new ArrayList<>();
-        apolloClient.query(new SemestersQuery()).enqueue(new ApolloCall.Callback<SemestersQuery.Data>() {
+        apolloClient = ApolloKt.apolloClient();
+
+        runOnUiThread(() -> {
+            getSemesters();
+            getSchools();
+            setGenre();
+        });
+    }
+
+    private void getSemesters() {
+        SemestersQuery semestersQuery = new SemestersQuery();
+        apolloClient.query(semestersQuery).enqueue(new ApolloCall.Callback<SemestersQuery.Data>() {
             @Override
             public void onResponse(@NotNull Response<SemestersQuery.Data> response) {
-                for(int i = 0; i < response.getData().semesters().size() ; i++){
-                    listSemesters.add(response.getData().semesters().get(i).name());
-                    Log.e("Apollo", "Semestre: " + listSemesters);
-                }
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        setSemesters(listSemesters);
+                Spinner spSemesters = findViewById(R.id.spinnerSemester);
+                ArrayAdapter<SemestersQuery.Semester> adapter = new ArrayAdapter<SemestersQuery.Semester>(SingUpActivity.this, android.R.layout.simple_spinner_dropdown_item, response.getData().semesters()) {
+                    @NonNull
+                    @Override
+                    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        SemestersQuery.Semester semester = getItem(position);
+                        if (convertView == null) {
+                            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
+                        }
+                        TextView label = (TextView) super.getView(position, convertView, parent);
+                        label.setText(semester.name());
+                        return convertView;
+                    }
+
+                    @Override
+                    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        SemestersQuery.Semester semester = getItem(position);
+                        if (convertView == null) {
+                            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
+                        }
+                        TextView label = (TextView) super.getDropDownView(position, convertView, parent);
+                        label.setText(semester.name());
+                        return convertView;
+                    }
+                };
+                spSemesters.setAdapter(adapter);
+                spSemesters.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        SemestersQuery.Semester semesterSelected = (SemestersQuery.Semester) parent.getItemAtPosition(position);
+                        semester = semesterSelected.name();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
                     }
                 });
             }
 
             @Override
             public void onFailure(@NotNull ApolloException e) {
-
+                Log.i("Error", e.toString());
             }
         });
+    }
 
-        apolloClient.query(new SchoolsQuery()).enqueue(new ApolloCall.Callback<SchoolsQuery.Data>() {
+    private void getSchools() {
+        SchoolsQuery schoolsQuery = new SchoolsQuery();
+        apolloClient.query(schoolsQuery).enqueue(new ApolloCall.Callback<SchoolsQuery.Data>() {
             @Override
             public void onResponse(@NotNull Response<SchoolsQuery.Data> response) {
-                for(int i = 0; i < response.getData().schools().size() ; i++){
-                    listSchool.add(response.getData().schools().get(i).name());
-                    listSchoolId.add(Integer.parseInt(response.getData().schools().get(i).id()));
-                    Log.e("Apollo", "Semestre: " + listSchool);
-                }
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        setSchool(listSchool, listSchoolId);
+                Spinner spSemesters = findViewById(R.id.spinnerschool);
+                ArrayAdapter<SchoolsQuery.School> adapter = new ArrayAdapter<SchoolsQuery.School>(SingUpActivity.this, android.R.layout.simple_spinner_dropdown_item, response.getData().schools()) {
+                    @NonNull
+                    @Override
+                    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        SchoolsQuery.School school = getItem(position);
+                        if (convertView == null) {
+                            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
+                        }
+                        TextView label = (TextView) super.getView(position, convertView, parent);
+                        label.setText(school.name());
+                        return convertView;
+                    }
+
+                    @Override
+                    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        SchoolsQuery.School school = getItem(position);
+                        if (convertView == null) {
+                            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
+                        }
+                        TextView label = (TextView) super.getDropDownView(position, convertView, parent);
+                        label.setText(school.name());
+                        return convertView;
+                    }
+                };
+                spSemesters.setAdapter(adapter);
+                spSemesters.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        SchoolsQuery.School semesterSelected = (SchoolsQuery.School) parent.getItemAtPosition(position);
+                        schoolId = Integer.parseInt(semesterSelected.id());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
                     }
                 });
             }
 
             @Override
             public void onFailure(@NotNull ApolloException e) {
-
+                Log.i("Error", e.toString());
             }
         });
-
-        setGenre();
-    }
-
-    private void setSemesters(ArrayList<String> list){
-        Spinner  spSemesters = (Spinner) findViewById(R.id.spinnerSemester);
-        spSemesters.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                semester = parent.getItemAtPosition(position).toString();
-                Log.e("Apollo", "Semestre: " +  parent.getItemAtPosition(position).toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        ArrayAdapter<CharSequence> comboSemesters = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list);
-        spSemesters.setAdapter(comboSemesters);
-    }
-
-    private void setSchool(ArrayList<String> list, ArrayList<Integer> listId ){
-        Spinner  spSchools = (Spinner) findViewById(R.id.spinnerschool);
-        spSchools.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                schoolId =  listId.get(position);
-                Log.e("Apollo", "School: "+ listId.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        ArrayAdapter<CharSequence> comboSchool = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list);
-        spSchools.setAdapter(comboSchool);
     }
 
     private void setGenre(){
-        Spinner spGenre = (Spinner)findViewById(R.id.spinnerGenero);
-
+        Spinner spGenre = findViewById(R.id.spinnerGenero);
         spGenre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 genreSelected = position == 0;
-                Log.e("Apollo", "Genero: " + genreSelected);
             }
 
             @Override
@@ -135,18 +168,18 @@ public class SingUpActivity extends AppCompatActivity  {
 
             }
         });
-        String[] list = {"Masulino", "Femenino"};
-        ArrayAdapter<CharSequence> comboGenre = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list);
+        String[] list = {"Masculino", "Femenino"};
+        ArrayAdapter<CharSequence> comboGenre = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, list);
         spGenre.setAdapter(comboGenre);
     }
 
     public void singUp(View view){
-        EditText nickname = (EditText)findViewById(R.id.inputNickname);
-        EditText password = (EditText)findViewById(R.id.inputPassword);
-        EditText email = (EditText)findViewById(R.id.inputEmail);
-        EditText name = (EditText)findViewById(R.id.inputName);
-        EditText lastname = (EditText)findViewById(R.id.inputLastName);
-        EditText birthday = (EditText)findViewById(R.id.inputDate);
+        EditText nickname = findViewById(R.id.inputNickname);
+        EditText password = findViewById(R.id.inputPassword);
+        EditText email = findViewById(R.id.inputEmail);
+        EditText name = findViewById(R.id.inputName);
+        EditText lastname = findViewById(R.id.inputLastName);
+        EditText birthday = findViewById(R.id.inputDate);
 
         UserInput userInput = UserInput.builder()
                 .nickname(nickname.getText().toString())
@@ -157,19 +190,17 @@ public class SingUpActivity extends AppCompatActivity  {
                 .birthDate(birthday.getText().toString())
                 .photo("fotoperfil.png")
                 .genre(genreSelected)
-                .state(true)
                 .semesterId(semester)
-                .schoolId(schoolId).build();
+                .schoolId(schoolId)
+                .build();
 
-        apolloClient.mutate(new SingUpMutation(userInput)).enqueue(new ApolloCall.Callback<SingUpMutation.Data>() {
+        SignUpMutation singUpMutation = new SignUpMutation(userInput);
+
+        apolloClient.mutate(singUpMutation).enqueue(new ApolloCall.Callback<SignUpMutation.Data>() {
             @Override
-            public void onResponse(@NotNull Response<SingUpMutation.Data> response) {
-                Log.e("Apollo", "Usuario: " + response.getData().signup().user().name());
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        Toast.makeText(SingUpActivity.this, "Hola " +response.getData().signup().user().name(), Toast.LENGTH_LONG).show();
-                    }
-                });
+            public void onResponse(@NotNull Response<SignUpMutation.Data> response) {
+                SignUpMutation.User user = Objects.requireNonNull(response.getData()).signup().user();
+                runOnUiThread(() -> Toast.makeText(SingUpActivity.this, "Hola " + user.name() + " " + user.lastname(), Toast.LENGTH_LONG).show());
                 openMainActivity();
             }
 

@@ -1,0 +1,24 @@
+{
+  "name": "Notas GraphQL",
+  "schemaPath": "app/src/main/graphql/com/andres/notasusat/schema.json",
+  "extensions": {
+    "endpoints": {
+      "production": {
+        "url": "https://notas-gql.herokuapp.com/",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "Authorization": "Bearer ${env:GRAPHQL-ACCESS-TOKEN}"
+        },
+        "introspect": true
+      },
+      "development": {
+        "url": "http://localhost:4000/",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "Authorization": "Bearer ${env:GRAPHQL-ACCESS-TOKEN}"
+        },
+        "introspect": true
+      }
+    }
+  }
+}

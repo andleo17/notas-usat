@@ -95,10 +95,8 @@
         android:id="@+id/btnIngresar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="80dp"
         android:background="@drawable/radius"
-        android:onClick="login"
         android:text="Ingresar"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/btnRegistrate"
